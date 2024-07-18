@@ -2,11 +2,8 @@ public class EmployeeWage {
 
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
-    public static final int EMP_RATE_PER_HOUR = 20;
-    public static final int NUM_OF_WORKING_DAYS = 2;
-    public static final int MAX_HRS_IN_MONTH = 10;
 
-    public static int computeWage() {
+    public static int computeWage(String company, int empRatePerHr, int numOfWorkingDays, int maxHrsInMonth) {
         {
 
             int empHours = 0;
@@ -14,7 +11,7 @@ public class EmployeeWage {
             int totalWorkingDays = 0;
 
 
-            while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+            while (totalEmpHrs <= maxHrsInMonth && totalWorkingDays < numOfWorkingDays) {
                 totalWorkingDays++;
                 int empCheck = (int) Math.floor(Math.random() * 10) % 3;
                 switch (empCheck) {
@@ -30,15 +27,16 @@ public class EmployeeWage {
                 totalEmpHrs += empHours;
                 System.out.println("Day#: " + totalWorkingDays + "Emp Hr: " + empHours);
             }
-            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-            System.out.println("Toatl Emp Wage: " + totalEmpWage);
+            int totalEmpWage = totalEmpHrs * empRatePerHr;
+            System.out.println("Toatl Emp Wage for " + company + " is: " + totalEmpWage);
             return totalEmpWage;
         }
 
     }
 
     public static void main(String[] args) {
-        computeWage();
+        computeWage("DMart",20,2,10);
+        computeWage("Reliance",10,4,20);
     }
 }
 
